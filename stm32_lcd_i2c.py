@@ -1,5 +1,5 @@
 """
-MicroPython for micro:bit Grove 16x2 LCD Series (I2C)
+MicroPython for Grove 16x2 LCD Series (I2C)
 https://github.com/vittascience/stm32-libraries
 https://wiki.seeedstudio.com/Grove-16x2_LCD_Series/
 
