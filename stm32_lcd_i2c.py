@@ -70,7 +70,7 @@ LCD_5x8DOTS = 0x00
 class LCD1602:
 
     """ Initialize instance of LCD1602 """
-    def __init__(self, i2c=I2C(0), addr=LCD_I2C_ADDR):
+    def __init__(self, i2c, addr=LCD_I2C_ADDR):
         self._i2c = i2c
         self._addr = addr
         self.fct = LCD_5x10DOTS|LCD_2LINE
