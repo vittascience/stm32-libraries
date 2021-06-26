@@ -23,8 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from machine import I2C, Pin
-from utime import sleep, sleep_ms
+from utime import sleep_ms
 
 LCD_I2C_ADDR = 0x3e
 LCD_COMMAND = 0x80
