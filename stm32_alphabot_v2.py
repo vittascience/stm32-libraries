@@ -1,11 +1,3 @@
-from stm32_TRsensors import TRSensors
-import machine
-import pyb
-import utime
-
-__version__ = "0.0.0-auto.0"
-__repo__ = "https://github.com/Vittascience/stm32-libraries"
-
 """
 MicroPython for AlphaBot2-Ar from Waveshare.
 https://github.com/vittascience/stm32-libraries
@@ -20,8 +12,10 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,6 +24,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
+__version__ = "0.0.0-auto.0"
+__repo__ = "https://github.com/Vittascience/stm32-libraries"
+
+from stm32_TRsensors import TRSensors
+import machine
+import pyb
+import utime
 
 ALPHABOT_V2_PIN_AIN2 = 'A0'
 ALPHABOT_V2_PIN_AIN1 = 'A1'
