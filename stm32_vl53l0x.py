@@ -1,10 +1,3 @@
-from micropython import const
-import utime
-import math
-
-__version__ = "0.0.0-auto.0"
-__repo__ = "https://github.com/Vittascience"
-
 """
 MicroPython for Grove Time Of Flight VL53L0X sensor (I2C).
 https://github.com/vittascience/stm32-libraries
@@ -19,8 +12,10 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,6 +24,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
+__version__ = "0.0.0-auto.0"
+__repo__ = "https://github.com/Vittascience/stm32-libraries"
+
+from micropython import const
+import utime
+import math
 
 _VL53L0X_IIC_ADDR = const(0x29)
 
