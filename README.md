@@ -3,7 +3,6 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 
 ### Grove modules
 
-
 * _stm32_bmp280.py_ driving Grove - Barometer sensor (BMP280) by I2C https://wiki.seeedstudio.com/Grove-Barometer_Sensor-BMP280/
 * _stm32_chainableLED.py_ driving Grove - Chainable LED RGB (P9813) https://wiki.seeedstudio.com/Grove-Chainable_RGB_LED/
 * _stm32_dht.py_ driving Grove - Temperature&Humidity sensors (DHT11/DHTT22) https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/ & https://wiki.seeedstudio.com/Grove-Temperature_and_Humidity_Sensor_Pro/
@@ -16,11 +15,15 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 * _stm32_alphabot_v2.py_ driving Alphabot2-Ar robot https://www.waveshare.com/wiki/AlphaBot2-Ar
 * _stm32_TRsensors.py_ driving the Alphabot2-Ar infrared sensors (QTRsensors) https://www.waveshare.com/wiki/AlphaBot2-Ar
 
+### IR remote control
+
+* _stm32_ir_receiver.py_ driving IR receiver.
+* _stm32_nec.py_ decode IR data receved for NEC remotes (8-bits & 16-bits) https://www.gotronic.fr/art-telecommande-ir-irc01-19568.htm
+
 # Librairies Stm32
 Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroPython sur la plateforme https://fr.vittascience.com/stm32/
 
 ### Modules Grove
-
 
 * _stm32_bmp280.py_ pilote le capteur (BMP280) en I2C https://wiki.seeedstudio.com/Grove-Barometer_Sensor-BMP280/
 * _stm32_chainableLED.py_ pilote le module Grove Chainable LED RGB (P9813) https://wiki.seeedstudio.com/Grove-Chainable_RGB_LED/
@@ -34,5 +37,10 @@ Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroP
 
 * _stm32_alphabot_v2.py_ pilote le robot Alphabot2-Ar https://www.waveshare.com/wiki/AlphaBot2-Ar
 * _stm32_TRsensors.py_ pilote les capteurs de ligne à infrarouge du robot Alphabot2-Ar (QTRsensors) https://www.waveshare.com/wiki/AlphaBot2-Ar
+
+### IR remote control
+
+* _stm32_ir_receiver.py_ pilote un récepteur infrarouge.
+* _stm32_nec.py_ décode les données infrarouges reçues https://www.gotronic.fr/art-telecommande-ir-irc01-19568.htm
 
 Le contenu de ce dossier est OpenSource.
