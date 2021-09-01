@@ -1,5 +1,5 @@
 """
-MicroPython for P9813 Chainable RGB LED driver
+MicroPython for Chainable RGB LED driver (P9813)
 https://github.com/mcauser/micropython-p9813
 https://github.com/Vittascience/stm32-libraries
 https://wiki.seeedstudio.com/Grove-Chainable_RGB_LED/
