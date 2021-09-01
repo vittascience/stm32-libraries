@@ -70,71 +70,71 @@ LCD_5x8DOTS = 0x00
 
 class LCD1602:
 
-    """ Initialize instance of LCD1602 """
-    def __init__(self, i2c, addr=LCD_I2C_ADDR):
-        self._i2c = i2c
-        self._addr = addr
-        self.fct = LCD_5x10DOTS|LCD_2LINE
-        sleep_ms(50)
-        self._command(LCD_FUNCTIONSET|self.fct)
-        sleep_ms(4500)
-        self._command(LCD_FUNCTIONSET|self.fct)
-        sleep_ms(150)
-        self._command(LCD_FUNCTIONSET|self.fct)
-        self._command(LCD_FUNCTIONSET|self.fct)
-        self.ctrl = LCD_DISPLAYON|LCD_CURSORON|LCD_BLINKOFF
-        self._command(self.ctrl)
-        self.clear()
-        self.mod = LCD_ENTRYLEFT|LCD_ENTRYSHIFTDECREMENT
-        self._command(LCD_ENTRYMODESET|self.mod)
-        self.display(True)
+  """ Initialize instance of LCD1602 """
+  def __init__(self, i2c, addr=LCD_I2C_ADDR):
+    self._i2c = i2c
+    self._addr = addr
+    self.fct = LCD_5x10DOTS|LCD_2LINE
+    sleep_ms(50)
+    self._command(LCD_FUNCTIONSET|self.fct)
+    sleep_ms(4500)
+    self._command(LCD_FUNCTIONSET|self.fct)
+    sleep_ms(150)
+    self._command(LCD_FUNCTIONSET|self.fct)
+    self._command(LCD_FUNCTIONSET|self.fct)
+    self.ctrl = LCD_DISPLAYON|LCD_CURSORON|LCD_BLINKOFF
+    self._command(self.ctrl)
+    self.clear()
+    self.mod = LCD_ENTRYLEFT|LCD_ENTRYSHIFTDECREMENT
+    self._command(LCD_ENTRYMODESET|self.mod)
+    self.display(True)
 
-    """ Write any text on screen """
-    def writeTxt(self, text):
-        for char in text:
-            self.write_char(ord(char))
+  """ Write any text on screen """
+  def writeTxt(self, text):
+    for char in text:
+      self.write_char(ord(char))
 
-    """ Write any character on screen """
-    def write_char(self, char):
-        self._write([0x40, char])
+  """ Write any character on screen """
+  def write_char(self, char):
+    self._write([0x40, char])
 
-    """ Place cursor on screen at (x, y) """
-    def setCursor(self, x, y):
-        x = (x|0x80) if y == 0 else (x|0xc0)
-        self._write([0x80, x])
+  """ Place cursor on screen at (x, y) """
+  def setCursor(self, x, y):
+    x = (x|0x80) if y == 0 else (x|0xc0)
+    self._write([0x80, x])
 
-    """ Active display """
-    def display(self, s):
-        if s:
-            self.ctrl |= LCD_DISPLAYON
-            self._command(LCD_DISPLAYCONTROL|self.ctrl)
-        else:
-            self.ctrl &= ~LCD_DISPLAYON
-            self._command(LCD_DISPLAYCONTROL|self.ctrl)
+  """ Active display """
+  def display(self, s):
+    if s:
+      self.ctrl |= LCD_DISPLAYON
+      self._command(LCD_DISPLAYCONTROL|self.ctrl)
+    else:
+      self.ctrl &= ~LCD_DISPLAYON
+      self._command(LCD_DISPLAYCONTROL|self.ctrl)
 
-    """ Write any text on screen"""
-    def cursor(self, s):
-        if s:
-            self.ctrl |= LCD_CURSORON
-            self._command(LCD_DISPLAYCONTROL|self.ctrl)
-        else:
-            self.ctrl &= ~LCD_CURSORON
-            self._command(LCD_DISPLAYCONTROL|self.ctrl)
+  """ Write any text on screen"""
+  def cursor(self, s):
+    if s:
+      self.ctrl |= LCD_CURSORON
+      self._command(LCD_DISPLAYCONTROL|self.ctrl)
+    else:
+      self.ctrl &= ~LCD_CURSORON
+      self._command(LCD_DISPLAYCONTROL|self.ctrl)
 
-    """ Return to home """
-    def home(self):
-        self._command(LCD_RETURNHOME)
-        sleep_ms(2)
+  """ Return to home """
+  def home(self):
+    self._command(LCD_RETURNHOME)
+    sleep_ms(2)
 
-    """ Clear screen """
-    def clear(self):
-        self._command(LCD_CLEARDISPLAY)
-        sleep_ms(2)
+  """ Clear screen """
+  def clear(self):
+    self._command(LCD_CLEARDISPLAY)
+    sleep_ms(2)
 
-    """ Write i2c buffer """
-    def _write(self, buffer):
-        self._i2c.writeto(self._addr, bytearray(buffer))
+  """ Write i2c buffer """
+  def _write(self, buffer):
+    self._i2c.writeto(self._addr, bytearray(buffer))
 
-    """ Send i2c command """
-    def _command(self, cmd):
-        self._write([LCD_COMMAND, cmd])
+  """ Send i2c command """
+  def _command(self, cmd):
+    self._write([LCD_COMMAND, cmd])
