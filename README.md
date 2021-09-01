@@ -6,7 +6,10 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 * _stm32_bmp280.py_ driving Grove - Barometer sensor (BMP280) by I2C https://wiki.seeedstudio.com/Grove-Barometer_Sensor-BMP280/
 * _stm32_chainableLED.py_ driving Grove - Chainable LED RGB (P9813) https://wiki.seeedstudio.com/Grove-Chainable_RGB_LED/
 * _stm32_dht.py_ driving Grove - Temperature&Humidity sensors (DHT11/DHTT22) https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/ & https://wiki.seeedstudio.com/Grove-Temperature_and_Humidity_Sensor_Pro/
+* _stm32_gas.py_ driving Grove - Multichannel Gas Sensor v1.0 https://wiki.seeedstudio.com/Grove-Multichannel_Gas_Sensor/
+* _stm32_hm330x.py_ driving the Grove - Laser PM (HM3301) sensor by I2C https://wiki.seeedstudio.com/Grove-Laser_PM2.5_Sensor-HM3301/
 * _stm32_lcd_i2c.py_ driving Grove - LCD I2C Series https://wiki.seeedstudio.com/Grove-16x2_LCD_Series/
+* _stm32_pcf85063tp.py_ dribing Grove - High Precision RTC (PCF85063) https://wiki.seeedstudio.com/Grove_High_Precision_RTC/
 * _stm32_th02.py_ driving Grove - Temperature&Humidity sensor v1.0 (TH02) by I2C https://wiki.seeedstudio.com/Grove-TemptureAndHumidity_Sensor-High-Accuracy_AndMini-v1.0/
 * _stm32_vl53l0x.py_ driving Grove - Time Of Flight sensor (VL53L0X) by I2C https://wiki.seeedstudio.com/Grove-Time_of_Flight_Distance_Sensor-VL53L0X/
 
@@ -28,8 +31,10 @@ Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroP
 * _stm32_bmp280.py_ pilote le capteur (BMP280) en I2C https://wiki.seeedstudio.com/Grove-Barometer_Sensor-BMP280/
 * _stm32_chainableLED.py_ pilote le module Grove Chainable LED RGB (P9813) https://wiki.seeedstudio.com/Grove-Chainable_RGB_LED/
 * _stm32_dht.py_ pilote les capteurs Grove Temperature&Humidity (DHT11/DHTT22) https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/ & https://wiki.seeedstudio.com/Grove-Temperature_and_Humidity_Sensor_Pro/
+* _stm32_gas.py_ pilote le capteur de gas multicannal Grove v1.0 https://wiki.seeedstudio.com/Grove-Multichannel_Gas_Sensor/
 * _stm32_hm330x.py_ pilote le capteur de particules Grove (HM3301) en I2C https://wiki.seeedstudio.com/Grove-Laser_PM2.5_Sensor-HM3301/
 * _stm32_lcd_i2c.py_ pilote le module Grove LCD I2C Series https://wiki.seeedstudio.com/Grove-16x2_LCD_Series/
+* _stm32_pcf85063tp.py_ pilote le module RTC Haute Precision Grove (PCF85063) https://wiki.seeedstudio.com/Grove_High_Precision_RTC/
 * _stm32_th02.py_ pilote le capteur de Température&Humidité Grove (TH02) v1.0 en I2C https://wiki.seeedstudio.com/Grove-TemptureAndHumidity_Sensor-High-Accuracy_AndMini-v1.0/
 * _stm32_vl53l0x.py_ pilote le capteur Time Of Flight (VL53L0X) en I2C https://wiki.seeedstudio.com/Grove-Time_of_Flight_Distance_Sensor-VL53L0X/
 
