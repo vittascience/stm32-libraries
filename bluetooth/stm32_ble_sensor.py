@@ -17,9 +17,6 @@ _IRQ_CENTRAL_CONNECT = const(1)
 _IRQ_CENTRAL_DISCONNECT = const(2)
 _IRQ_GATTS_WRITE = const(3)
 
-# Pour les UUID et les codes, on se réfère à la documentation du SDK Blue-ST disponible ici :
-# https://www.st.com/resource/en/user_manual/dm00550659-getting-started-with-the-bluest-protocol-and-sdk-stmicroelectronics.pdf.
-
 # 1 - Définition du service personnalisé selon le SDK Blue-ST
 
 # Indique que l'on va communiquer avec une application qui se conforme au protocole Blue-ST
