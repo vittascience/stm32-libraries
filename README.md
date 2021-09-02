@@ -27,7 +27,8 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 
 * _stm32_ble_sensor.py_ driving BLE functionalities e.g. Sending data to ST BLE Sensor App https://www.st.com/en/embedded-software/stblesensor.html
 * _stm32_ble_uart.py_ driving BLE uart communication (with predifined standard UUIDs for RX and TX).
-* _stm32_ble.py_ driving BLE uart communication. (Advanced library, customizable UUIDs for RX and TX).*_stm32_bleAdvertising.py_ driving BLE basic functionalities e.g. (decoding, advertising, ...).
+* _stm32_ble.py_ driving BLE uart communication. (Advanced library, customizable UUIDs for RX and TX).
+* _stm32_bleAdvertising.py_ driving BLE basic functionalities e.g. (decoding, advertising, ...).
 # Librairies Stm32
 Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroPython sur la plateforme https://fr.vittascience.com/stm32/
 
