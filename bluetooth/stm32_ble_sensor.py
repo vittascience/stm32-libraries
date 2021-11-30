@@ -6,7 +6,7 @@
 # 4 - TEMPERATURE : pour envoyer une mesure de température du périphérique à un central
 
 import bluetooth  # Bibliothèque bas niveau pour la gestion du BLE
-from ble_advertising import adv_payload  # Pour gérer l'advertising GAP
+from stm32_bleAdvertising import adv_payload  # Pour gérer l'advertising GAP
 from struct import pack  # Pour agréger les octets envoyés par les trames BLE
 from micropython import const  # Pour définir des constantes entières
 import pyb  # Pour gérer les LED de la NUCLEO-WB55
