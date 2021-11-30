@@ -229,7 +229,6 @@ class BMP280:
       var2 = (((((self._t_raw >> 4) - self._T1) * ((self._t_raw >> 4) - self._T1)) >> 12) * self._T3) >> 14
       self._t_fine = var1 + var2
   
-  @property
   def temperature(self):
     self.set_default_measure()
     self._calc_t_fine()
@@ -237,7 +236,6 @@ class BMP280:
       self._t = ((self._t_fine * 5 + 128) >> 8) / 100.
     return self._t
 
-  @property
   def pressure(self):
     self.set_default_measure()
     # From datasheet page 22
@@ -262,9 +260,8 @@ class BMP280:
       self._p = p / 256.0
     return self._p
 
-  @property
   def altitude(self):
-    return 44330*(1-(self.pressure/101325)**(1/5.255))
+    return 44330*(1-(self.pressure()/101325)**(1/5.255))
 
   def _write_bits(self, address, value, length, shift=0):
     d = self._read(address)[0]
