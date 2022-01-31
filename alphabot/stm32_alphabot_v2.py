@@ -29,6 +29,7 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/Vittascience/stm32-libraries"
 
 from stm32_TRsensors import TRSensors
+from stm32_pcf8574 import PCF8574
 import machine
 import pyb
 import utime
@@ -54,6 +55,8 @@ ALPHABOT_V2_PIN_TRS_ADDR = 'D12'
 ALPHABOT_V2_PIN_TRS_CLK = 'D13'
 
 ALPHABOT_V2_PCF8574_I2C_ADDR = 0x20
+ALPHABOT_V2_OLED_I2C_ADDR_DC_OFF = 0x3c
+ALPHABOT_V2_OLED_I2C_ADDR_DC_ON = 0x3d
 
 class AlphaBot_v2(object):
   
@@ -89,7 +92,7 @@ class AlphaBot_v2(object):
 
     print('[Alpha_INFO]: TR sensors initialised')
 
-    self._i2c = machine.I2C(1)
+    self.i2c = machine.I2C(1)
 
     self.LEFT_OBSTACLE = 'L'
     self.RIGHT_OBSTACLE = 'R'
@@ -107,6 +110,16 @@ class AlphaBot_v2(object):
     self.pin_IR = pyb.Pin(ALPHABOT_V2_PIN_IR, pyb.Pin.IN)
 
     print('[Alpha_INFO]: IR receiver initialised (for remotes)')
+
+    self.pin_oled_reset = pyb.Pin(ALPHABOT_V2_PIN_OLED_RESET, pyb.Pin.OUT)
+    self.pin_oled_reset.off()
+    utime.sleep_ms(10)
+    self.pin_oled_reset.on()
+    self.pin_DC = pyb.Pin(ALPHABOT_V2_PIN_OLED_D_C, pyb.Pin.OUT)
+
+    print('[Alpha_INFO]: OLED screen initialised')
+
+    self._pcf8574 = PCF8574(self.i2c, addr=ALPHABOT_V2_PCF8574_I2C_ADDR)
           
   def setPWMA(self, value):
     self.PWMA.pulse_width_percent(value)
@@ -150,33 +163,39 @@ class AlphaBot_v2(object):
       self.stop()
 
   def turnLeft(self, speed, duration_ms=0):
-    self.setMotors(left=50-speed, right=speed)
+    if speed < 20:
+      self.setMotors(left=speed, right=50-speed)
+    else:
+      self.setMotors(left=30-speed, right=speed)
     if duration_ms:
       utime.sleep_ms(duration_ms)
       self.stop()
 
   def turnRight(self, speed, duration_ms=0):
-    self.setMotors(left=speed, right=50-speed)
+    if speed < 20:
+      self.setMotors(left=50-speed, right=speed)
+    else:
+      self.setMotors(left=speed, right=30-speed)
     if duration_ms:
       utime.sleep_ms(duration_ms)
       self.stop()
-
-  def TRSensors_calibrate(self):
-    self.tr_sensors.calibrate()
 
   def calibrateLineFinder(self):
     print("[Alpha_INFO]: TR sensors calibration ...\\n")
     for i in range(0, 100):
       if i<25 or i>= 75:
-        self.turnRight(30)
+        self.turnRight(15)
       else:
-        self.turnLeft(30)
+        self.turnLeft(15)
       self.TRSensors_calibrate()
     self.stop()
     print("Calibration done.\\n")
     print(str(self.tr_sensors.calibratedMin) + '\\n')
     print(str(self.tr_sensors.calibratedMax) + '\\n')
     utime.sleep_ms(500)
+
+  def TRSensors_calibrate(self):
+    self.tr_sensors.calibrate()
 
   def TRSensors_readLine(self, sensor = 0):
     position, sensor_values = self.tr_sensors.readLine()
@@ -198,46 +217,43 @@ class AlphaBot_v2(object):
     duration = measurements/length
     return 343 * duration/2 * 100
 
+  def getOLEDaddr(self):
+    if self.pin_DC.value(): 
+      return ALPHABOT_V2_OLED_I2C_ADDR_DC_ON
+    else: 
+      return ALPHABOT_V2_OLED_I2C_ADDR_DC_OFF
+
   # Drivers for PCF8574T
 
   def controlBuzzer(self, state):
-    if state:
-      self.pcf8574_write([0xDF & self.pcf8574_read()])
-    else:
-      self.pcf8574_write([0x20 & self.pcf8574_read()])
+    self._pcf8574.pin(5, state)
 
   def getJoystickValue(self):
-    self.pcf8574_write([0x1F & self.pcf8574_read()])
-    value = self.pcf8574_read() | 0xE0
-    if value == 0xFE:
+    i = 0
+    for i in range(5):
+      if not self._pcf8574.pin(i): break
+      elif i == 4: i = None
+    if i == 0:
       return self.JOYSTICK_UP
-    elif value == 0xFD:
+    elif i == 1:
       return self.JOYSTICK_RIGHT
-    elif value == 0xFB:
+    elif i == 2:
       return self.JOYSTICK_LEFT
-    elif value == 0xF7:
+    elif i == 3:
       return self.JOYSTICK_DOWN
-    elif value == 0xEF:
+    elif i == 4:
       return self.JOYSTICK_CENTER
-    else:
+    else: 
       return None
 
   def readInfrared(self):
-    self.pcf8574_write([0xC0 | self.pcf8574_read()])
-    value = self.pcf8574_read() | 0x3F
-    if value == 0x7F:
+    left = not self._pcf8574.pin(7)
+    right = not self._pcf8574.pin(6)
+    if left and not right:
       return self.LEFT_OBSTACLE
-    elif value == 0xBF:
+    elif not left and right:
       return self.RIGHT_OBSTACLE
-    elif value == 0x3F:
+    elif left and right:
       return self.BOTH_OBSTACLE
-    elif value == 0xFF:
-      return self.NO_OBSTACLE
     else:
-      return None
-
-  def pcf8574_write(self, data):
-    self._i2c.writeto(ALPHABOT_V2_PCF8574_I2C_ADDR, bytearray(data))
-
-  def pcf8574_read(self):
-    return self._i2c.readfrom(ALPHABOT_V2_PCF8574_I2C_ADDR, 1)[0]
+      return self.NO_OBSTACLE
