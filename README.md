@@ -23,6 +23,12 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 * _stm32_ir_receiver.py_ driving IR receiver.
 * _stm32_nec.py_ decode IR data receved for NEC remotes (8-bits & 16-bits) https://www.gotronic.fr/art-telecommande-ir-irc01-19568.htm
 
+### Bluetooth Low Energy (BLE)
+
+* _stm32_ble_sensor.py_ driving BLE functionalities e.g. Sending data to ST BLE Sensor App https://www.st.com/en/embedded-software/stblesensor.html
+* _stm32_ble_uart.py_ driving BLE uart communication (with predifined standard UUIDs for RX and TX).
+* _stm32_ble.py_ driving BLE uart communication. (Advanced library, customizable UUIDs for RX and TX).
+* _stm32_bleAdvertising.py_ driving BLE basic functionalities e.g. (decoding, advertising, ...).
 # Librairies Stm32
 Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroPython sur la plateforme https://fr.vittascience.com/stm32/
 
@@ -47,5 +53,12 @@ Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroP
 
 * _stm32_ir_receiver.py_ pilote un récepteur infrarouge.
 * _stm32_nec.py_ décode les données infrarouges reçues https://www.gotronic.fr/art-telecommande-ir-irc01-19568.htm
+
+### Bluetooth Low Energy (BLE)
+
+* _stm32_ble_sensor.py_ pilote les fonctionnalités du BLE, par exemple: L'envoi de données à l'application mobile ST BLE Sensor  https://www.st.com/en/embedded-software/stblesensor.html
+* _stm32_ble_uart.py_ pilote la communication UART du BLE (Les UUIDs RX/TX sont standards et prédéfinis).
+* _stm32_ble.py_ pilote la communication UART (Librarie avancée avec UUID modifiables).
+* _stm32_bleAdvertising.py_ pilote les fonctionnalités de base du BLE, par exemple: Décodage et annoces de connexions.
 
 Le contenu de ce dossier est OpenSource.
