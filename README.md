@@ -17,6 +17,7 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 
 * _stm32_alphabot_v2.py_ driving Alphabot2-Ar robot https://www.waveshare.com/wiki/AlphaBot2-Ar
 * _stm32_TRsensors.py_ driving the Alphabot2-Ar infrared sensors (QTRsensors) https://www.waveshare.com/wiki/AlphaBot2-Ar
+* _stm32_pcf8574.py_ driving the component (PCF8574) allowing to connect 8 modules to a pin and communicate with them by I2C.
 
 ### IR remote control
 
@@ -29,6 +30,7 @@ This folder contains custom libraries for STM32 boards in MicroPython used on th
 * _stm32_ble_uart.py_ driving BLE uart communication (with predifined standard UUIDs for RX and TX).
 * _stm32_ble.py_ driving BLE uart communication. (Advanced library, customizable UUIDs for RX and TX).
 * _stm32_bleAdvertising.py_ driving BLE basic functionalities e.g. (decoding, advertising, ...).
+
 # Librairies Stm32
 Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroPython sur la plateforme https://fr.vittascience.com/stm32/
 
@@ -48,6 +50,7 @@ Ce dossier contient les librairies personnalisées pour la carte STM32 en MicroP
 
 * _stm32_alphabot_v2.py_ pilote le robot Alphabot2-Ar https://www.waveshare.com/wiki/AlphaBot2-Ar
 * _stm32_TRsensors.py_ pilote les capteurs de ligne à infrarouge du robot Alphabot2-Ar (QTRsensors) https://www.waveshare.com/wiki/AlphaBot2-Ar
+* _stm32_pcf8574.py_ pilote le composant (PCF8574) permettant de connecter 8 modules à une broche et communiquant en I2C.
 
 ### IR remote control
 
