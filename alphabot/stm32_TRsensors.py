@@ -191,9 +191,9 @@ class TRSensors(object):
       # If it last read to the right of center, return the max.
       else:
         #print("right")
-        self.last_value = (self.numSensors - 1)*1000
+        self.last_value = (self._numSensors - 1)*1000
 
     else:
       self.last_value = avg/sum
     
-    return self.last_value,sensor_values`;
+    return self.last_value,sensor_values;
